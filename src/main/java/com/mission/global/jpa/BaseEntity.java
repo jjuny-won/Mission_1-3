@@ -1,6 +1,7 @@
 package com.mission.global.jpa;
 
 
+import com.mission.global.global.GlobalConfig;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 
@@ -16,4 +17,7 @@ public abstract class BaseEntity {
 
     public abstract LocalDateTime getModifyDate();
 
+    protected void publishEvent(Object event) {
+        GlobalConfig.getEventPublisher().publish(event);
+    }
 }

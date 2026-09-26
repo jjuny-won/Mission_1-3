@@ -5,19 +5,13 @@ import com.mission.boundedContext.member.out.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
-public class MemberSupport {
-
+public class MemberIncreaseActivityScoreUseCase {
     private final MemberRepository memberRepository;
 
-    public long count(){
-        return memberRepository.count();
-    }
-
-    public Optional<Member> findById(int id) {
-        return memberRepository.findById(id);
+    public int increaseActivityScore(int memberId, int amount) {
+        Member member = memberRepository.findById(memberId).get();
+        return member.increaseActivityScore(amount);
     }
 }

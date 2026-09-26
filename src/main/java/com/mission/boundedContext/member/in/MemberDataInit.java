@@ -7,6 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.core.annotation.Order;
 import org.springframework.transaction.annotation.Transactional;
 
 @Configuration
@@ -26,6 +27,7 @@ public class MemberDataInit {
 
     //스프링 부트 애플리케이션 실행 직후 딱 한 번 자동으로 실행되는 인터페이스
     @Bean
+    @Order(1)
     public ApplicationRunner baseInitDataRunner() {
         return args -> {
             self.makeBaseMembers();
